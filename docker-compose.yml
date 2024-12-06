@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  backend:
+    image: lauvas23/api:latest # backend en dockerhub
+    container_name: api-compose
+    ports:
+      - "8080:8080"
+    networks:
+      - prueba-network
+
+  frontend:
+    image: lauvas23/web:latest # frontend en dockerhub
+    container_name: web-compose
+    ports:
+      - "4200:80" # Mapea el puerto 80 del contenedor al 4200
+    networks:
+      - prueba-network
+
+networks:
+  prueba-network:
+    driver: bridge
